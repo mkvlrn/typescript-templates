@@ -1,8 +1,21 @@
 # typescript-templates
 
-List of opinionated templates for typescript projects I usually create.
+List of opinionated templates for typescript projects.
 
-This is in no way a comprehensive selection of different, exotic projects - but there is enough difference between them to warrant this repo.
+This is in no way a comprehensive selection of different, exotic repositories - but there is enough difference between them to warrant this documentation.
+
+- [so... what's this?](#so-whats-this)
+- [the templates](#the-templates)
+  - [ts-node](#ts-node)
+- [doing it manually](#doing-it-manually)
+  - [vscode setup](#vscode-setup)
+  - [project initialization](#project-initialization)
+  - [commitlint](#commitlint)
+  - [eslint](#eslint)
+  - [prettier](#prettier)
+  - [jest](#jest)
+  - [lint-staged](#lint-staged)
+  - [husky](#husky)
 
 ---
 
@@ -80,7 +93,7 @@ It's ordered in a manner that makes sense for someone creating a new project fro
 
 It is assumed you use vscode as your editor, yarn as your package manager, and are developing in a linux-like environment (wsl2 works perfectly).
 
-### 1 - vscode settings and extensions
+### vscode setup
 
 <details>
 <summary><b>create file:</b> <i>.vscode/settings.json</i></summary>
@@ -124,7 +137,7 @@ It is assumed you use vscode as your editor, yarn as your package manager, and a
 Then, just install the extensions listed in _workspace recommendations_:
 ![installing recommended extensions in vscode](recommended-extensions.png)
 
-### 2 - project initialization
+### project initialization
 
 **cmd:** _git init, node project start, couple scripts, and first dependencies_
 
@@ -195,7 +208,7 @@ max_line_length = 80
     "module": "CommonJS",
     "target": "ESNext",
     "lib": [
-      "ESNext"
+      "ESNext",
       "DOM",
       "DOM.Iterable"
     ],
@@ -254,7 +267,7 @@ max_line_length = 80
 
 </details>
 
-### 3 - commitlint
+### commitlint
 
 **cmd:** _install dependencies_
 
@@ -273,7 +286,7 @@ yarn add @commitlint/cli @commitlint/config-conventional -D
 
 </details>
 
-### 4 - eslint
+### eslint
 
 **cmd:** _install dependencies_
 
@@ -326,9 +339,6 @@ yarn add eslint \
     "import/resolver": {
       "typescript": {}
     },
-    "react": {
-      "version": "detect"
-    },
     "jest": {
       "version": "latest"
     }
@@ -360,7 +370,7 @@ yarn add eslint \
 
 </details>
 
-### 5 - prettier
+### prettier
 
 **cmd:** _install dependencies_
 
@@ -397,7 +407,7 @@ yarn add prettier @trivago/prettier-plugin-sort-imports -D
 
 </details>
 
-### 6 - jest
+### jest
 
 **cmd:** _install dependencies, add test script_
 
@@ -423,7 +433,7 @@ const config: Config = {
   passWithNoTests: true,
   preset: "ts-jest",
   rootDir: "./",
-  testRegex: ".(spec|test).(ts|tsx)$",
+  testRegex: ".spec.(ts|tsx)$", // "spec" for unit tests, "test" for integration or e2e
   testEnvironment: "node", // "jsdom" for react
   moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths, {
     prefix: "<rootDir>",
@@ -431,6 +441,8 @@ const config: Config = {
   transform: {
     "^.+.(png|svg|jpg|gif|webp)$": "jest-transform-stub",
   },
+  coverageDirectory: 'coverage',
+  collectCoverageFrom: ['./src/**/*.{ts,tsx}', '!**/index.{ts,tsx}'],
 };
 
 export default config;
@@ -438,7 +450,7 @@ export default config;
 
 </details>
 
-### 7 - lint-staged
+### lint-staged
 
 **cmd:** _install dependencies_
 
@@ -463,7 +475,7 @@ yarn add lint-staged tsc-files -D
 
 </details>
 
-### 8 - husky
+### husky
 
 **cmd:** _install dependency and setup hooks_
 
