@@ -7,6 +7,7 @@ This is in no way a comprehensive selection of different, exotic repositories - 
 - [so... what's this?](#so-whats-this)
 - [the templates](#the-templates)
   - [ts-node](#ts-node)
+  - [ts-react](#ts-react)
 - [doing it manually](#doing-it-manually)
   - [vscode setup](#vscode-setup)
   - [project initialization](#project-initialization)
