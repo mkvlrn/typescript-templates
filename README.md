@@ -8,6 +8,7 @@ This is in no way a comprehensive selection of different, exotic repositories - 
 - [the templates](#the-templates)
   - [ts-node](#ts-node)
   - [ts-react](#ts-react)
+  - [ts-lambda](#ts-lambda)
 - [doing it manually](#doing-it-manually)
   - [vscode setup](#vscode-setup)
   - [project initialization](#project-initialization)
@@ -90,6 +91,12 @@ The simplest of them all. A base node project without any dependencies other tha
 **<https://github.com/mkvlrn/ts-react>**
 
 A barebones react app using vite as bundler.
+
+### ts-lambda
+
+**<https://github.com/mkvlrn/ts-lambda>**
+
+A simple lambda function implementation using the serverless framework.
 
 ---
 
