@@ -1,6 +1,6 @@
 # typescript-templates
 
-List of opinionated templates for typescript projects. And also a mini-guide to setup a new project manually (at the end).
+List of opinionated templates for typescript projects. And also a mini-guide to set up a new project manually (at the end).
 
 This is in no way a comprehensive selection of different, exotic repositories - but there is enough difference between them to warrant this documentation.
 
@@ -21,7 +21,7 @@ This is in no way a comprehensive selection of different, exotic repositories - 
 
 ## so... what's this?
 
-It's mainly about the configurations of dev dependencies and/or file strucutures that need to be adjusted for one reason or another - and preserving them in templates is as good documentation as any, methinks.
+It's mainly about the configurations of dev dependencies and/or file structures that need to be adjusted for one reason or another - and preserving them in templates is as good documentation as any, methinks.
 
 <details>
 <summary>So, it's the same good, old "build system" using 👇:</summary>
@@ -65,7 +65,7 @@ It's mainly about the configurations of dev dependencies and/or file strucutures
 - putting it all together
 
   - [lint-staged](https://github.com/okonet/lint-staged) to run tools (type checking, linting, formatting, testing) on commited files only
-  - [husky](https://github.com/typicode/husky) to setup the git hooks for `commitlint` and `lint-staged`
+  - [husky](https://github.com/typicode/husky) to set up the git hooks for `commitlint` and `lint-staged`
 
 - some CI
   - [github actions](https://docs.github.com/en/actions) used to run tests
@@ -87,7 +87,7 @@ The simplest of them all. A base node project without any dependencies other tha
 
 ## doing it manually
 
-This could be used as a step-by-step guide to setup a new project or just to pick and choose what to add.
+This could be used as a step-by-step guide to set up a new project or just to pick and choose what to add.
 
 It's ordered in a manner that makes sense for someone creating a new project from scratch.
 
@@ -207,17 +207,11 @@ max_line_length = 80
   "compilerOptions": {
     "module": "CommonJS",
     "target": "ESNext",
-    "lib": [
-      "ESNext",
-      "DOM",
-      "DOM.Iterable"
-    ],
+    "lib": ["ESNext", "DOM", "DOM.Iterable"],
     "rootDir": ".",
     "baseUrl": ".",
     "paths": {
-      "#/*": [
-        "src/*"
-      ]
+      "#/*": ["src/*"]
     },
     "allowJs": false,
     "allowSyntheticDefaultImports": true,
@@ -234,15 +228,9 @@ max_line_length = 80
     "skipLibCheck": true,
     "strict": true
   },
-  "include": [
-    "./src",
-    "./test",
-    "*.config.*"
-  ],
+  "include": ["./src", "./test", "*.config.*"],
   "ts-node": {
-    "require": [
-      "tsconfig-paths/register"
-    ]
+    "require": ["tsconfig-paths/register"]
   }
 }
 ```
@@ -441,8 +429,8 @@ const config: Config = {
   transform: {
     "^.+.(png|svg|jpg|gif|webp)$": "jest-transform-stub",
   },
-  coverageDirectory: 'coverage',
-  collectCoverageFrom: ['./src/**/*.{ts,tsx}', '!**/index.{ts,tsx}'],
+  coverageDirectory: "coverage",
+  collectCoverageFrom: ["./src/**/*.{ts,tsx}", "!**/index.{ts,tsx}"],
 };
 
 export default config;
@@ -477,7 +465,7 @@ yarn add lint-staged tsc-files -D
 
 ### husky
 
-**cmd:** _install dependency and setup hooks_
+**cmd:** _install dependency and set up hooks_
 
 there's a `sed` step in there because of [this issue](https://github.com/typicode/husky/issues/924)
 
@@ -489,3 +477,96 @@ npx husky add .husky/pre-commit 'npx lint-staged -v'
 npx husky add .husky/commit-msg 'npx --no-install -- commitlint --edit'
 sed -i 's/^npx.*/& $1/' .husky/commit-msg
 ```
+
+### github actions and sonarcloud
+
+Using github actions to run tests on pushes or new PRs is straightforward, but adding code and coverage analysis to it is a bit more complicated, and requires some extra steps outside of what can be done just with configuration files.
+
+A reminder that the free sonar cloud service is only available to public repositories, and I've only tested it with github, although it probably works the same way with any other services such as gitlab or bitbucket.
+
+If code analysis is not needed at the moment, just don't create the `sonar-project.properties` file and don't add the second step to the job in the workflow file, and the testing step will work by itself just fine.
+
+But if it is, before configuring it, you'll need to:
+
+- create a free [sonar cloud account](https://www.sonarsource.com/products/sonarcloud/signup/)
+
+- add your "organization" to it, which would be your personal github account or a proper github organization
+
+- add a new project to be analyzed by selecting one of the available ones (they'll show up after adding your organization) - again, only public repos can be analyzed for free
+
+- disable automatic analysis for the project by going to _**Administration -> Analysis Method -> Automatic Analysis**_ and turning it off - this is done in order to gain full control of the analysis in the configuration file setup in here
+
+- create an access token for the project by going to _**My Account -> Security**_ - copy it and save it in your repository as a new Secret (Actions) named `SONAR_TOKEN`
+
+Now you have both a Sonarcloud organization and a project key, that can be checked in _**[Your project] -> Information**_ - organization key will be something like `mygithubusername-sonar` and project key like `mygithubusername_myprojectname`, and these values will be used in the example configuration below.
+
+<details>
+<summary><b>create file:</b> <i>sonar-project.properties</i></summary>
+
+```properties
+sonar.organization=mygithubusername-sonar
+sonar.projectKey=mygithubusername_ts-node
+sonar.language=ts
+sonar.sources=./src
+sonar.coverage.exclusions=**/*.spec.ts,**/.spec.tsx,**/index.ts,**/index.tsx
+sonar.javascript.lcov.reportPaths=coverage/lcov.info
+```
+
+</details>
+
+<details>
+<summary><b>create file:</b> <i>.github/workflows/test-and-analyze</i></summary>
+
+```yml
+name: test-and-analyze
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    types:
+      - opened
+      - synchronize
+      - reopened
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: install dependencies
+        run: yarn install
+      - name: run tests
+        run: yarn test --coverage
+      - name: save artifact for sonar
+        uses: actions/upload-artifact@v3
+        with:
+          name: artifact
+          path: coverage
+  sonarcloud:
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+      - name: checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: download artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: artifact
+          path: ./coverage
+      - name: trigger scan
+        uses: sonarsource/sonarcloud-github-action@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
+```
+
+</details>
+<br />
+
+This configuration is also very opinionated regarding test coverage, but other settings follow the "Sonar Way" default configurations of Sonarcloud.
