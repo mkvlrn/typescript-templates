@@ -84,6 +84,12 @@ It's mainly about the configurations of dev dependencies and/or file structures 
 
 The simplest of them all. A base node project without any dependencies other than dev.
 
+### ts-react
+
+**<https://github.com/mkvlrn/ts-react>**
+
+A barebones react app using vite as bundler.
+
 ---
 
 ## doing it manually
