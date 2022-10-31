@@ -1,6 +1,6 @@
 # typescript-templates
 
-List of opinionated templates for typescript projects.
+List of opinionated templates for typescript projects. And also a mini-guide to setup a new project manually (at the end).
 
 This is in no way a comprehensive selection of different, exotic repositories - but there is enough difference between them to warrant this documentation.
 
