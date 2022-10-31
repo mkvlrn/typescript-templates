@@ -16,6 +16,7 @@ This is in no way a comprehensive selection of different, exotic repositories - 
   - [jest](#jest)
   - [lint-staged](#lint-staged)
   - [husky](#husky)
+  - [github actions and sonarcloud](#github-actions-and-sonarcloud)
 
 ---
 
@@ -484,7 +485,7 @@ Using github actions to run tests on pushes or new PRs is straightforward, but a
 
 A reminder that the free sonar cloud service is only available to public repositories, and I've only tested it with github, although it probably works the same way with any other services such as gitlab or bitbucket.
 
-If code analysis is not needed at the moment, just don't create the `sonar-project.properties` file and don't add the second step to the job in the workflow file, and the testing step will work by itself just fine.
+If code analysis is not needed at the moment, just don't create the `sonar-project.properties` file, and don't add the second step to the job in the workflow file - the testing step will work by itself just fine.
 
 But if it is, before configuring it, you'll need to:
 
@@ -563,7 +564,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-
 ```
 
 </details>
