@@ -497,6 +497,8 @@ But if it is, before configuring it, you'll need to:
 
 - disable automatic analysis for the project by going to _**Administration -> Analysis Method -> Automatic Analysis**_ and turning it off - this is done in order to gain full control of the analysis in the configuration file setup in here
 
+- adjust the quality gate to work in "new code" by going to _**Administration -> New Code**_ and then selecting "Previous version" - this will activate the default quality gate for any new code being pushed
+
 - create an access token for the project by going to _**My Account -> Security**_ - copy it and save it in your repository as a new Secret (Actions) named `SONAR_TOKEN`
 
 Now you have both a Sonarcloud organization and a project key, that can be checked in _**[Your project] -> Information**_ - organization key will be something like `mygithubusername-sonar` and project key like `mygithubusername_myprojectname`, and these values will be used in the example configuration below.
