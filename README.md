@@ -516,7 +516,7 @@ sonar.javascript.lcov.reportPaths=coverage/lcov.info
 </details>
 
 <details>
-<summary><b>create file:</b> <i>.github/workflows/test-and-analyze</i></summary>
+<summary><b>create file:</b> <i>.github/workflows/test-and-analyze.yml</i></summary>
 
 ```yml
 name: test-and-analyze
