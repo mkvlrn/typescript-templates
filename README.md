@@ -511,7 +511,7 @@ sonar.organization=mygithubusername-sonar
 sonar.projectKey=mygithubusername_ts-node
 sonar.language=ts
 sonar.sources=./src
-sonar.coverage.exclusions=**/*.spec.ts,**/.spec.tsx,**/index.ts,**/index.tsx
+sonar.coverage.exclusions=**/*.spec.ts,**/*.spec.tsx,**/index.ts,**/index.tsx
 sonar.javascript.lcov.reportPaths=coverage/lcov.info
 ```
 
