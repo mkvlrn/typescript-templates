@@ -27,7 +27,7 @@ This is in no way a comprehensive selection of different, exotic repositories - 
 It's mainly about the configurations of dev dependencies and/or file structures that need to be adjusted for one reason or another - and preserving them in templates is as good documentation as any, methinks.
 
 <details>
-<summary>So, it's the same good, old "build system" using 👇:</summary>
+<summary>👇 So, it's the same good, old "build system" using 👇</summary>
 
 - vscode settings
 
@@ -111,7 +111,7 @@ It is assumed you use vscode as your editor, yarn as your package manager, and a
 ### vscode setup
 
 <details>
-<summary><b>create file:</b> <i>.vscode/settings.json</i></summary>
+<summary><b>📝 create file 📝:</b> <i>.vscode/settings.json</i></summary>
 
 ```json
 {
@@ -138,7 +138,7 @@ It is assumed you use vscode as your editor, yarn as your package manager, and a
 </details>
 
 <details>
-<summary><b>create file:</b> <i>.vscode/extensions.json</i></summary>
+<summary><b>📝 create file 📝:</b> <i>.vscode/extensions.json</i></summary>
 
 ```json
 {
@@ -173,7 +173,7 @@ yarn add typescript \
 ```
 
 <details>
-<summary><b>create file:</b> <i>.gitignore</i></summary>
+<summary><b>📝 create file 📝:</b> <i>.gitignore</i></summary>
 
 ```gitignore
 node_modules
@@ -184,7 +184,7 @@ build
 </details>
 
 <details>
-<summary><b>create file:</b> <i>.editorconfig</i></summary>
+<summary><b>📝 create file 📝:</b> <i>.editorconfig</i></summary>
 
 ```editorconfig
 root = true
@@ -201,7 +201,7 @@ max_line_length = 80
 </details>
 
 <details>
-<summary><b>create file:</b> <i>nodemon.json</i></summary>
+<summary><b>📝 create file 📝:</b> <i>nodemon.json</i></summary>
 
 ```json
 {
@@ -215,7 +215,7 @@ max_line_length = 80
 </details>
 
 <details>
-<summary><b>create file:</b> <i>tsconfig.json</i></summary>
+<summary><b>📝 create file 📝:</b> <i>tsconfig.json</i></summary>
 
 ```json
 {
@@ -253,7 +253,7 @@ max_line_length = 80
 </details>
 
 <details>
-<summary><b>create file:</b> <i>tsconfig.build.json</i></summary>
+<summary><b>📝 create file 📝:</b> <i>tsconfig.build.json</i></summary>
 
 ```json
 {
@@ -279,7 +279,7 @@ yarn add @commitlint/cli @commitlint/config-conventional -D
 ```
 
 <details>
-<summary><b>create file:</b> <i>.commitlintrc.json</i></summary>
+<summary><b>📝 create file 📝:</b> <i>.commitlintrc.json</i></summary>
 
 ```json
 {
@@ -309,7 +309,7 @@ yarn add eslint \
 ```
 
 <details>
-<summary><b>create file:</b> <i>.eslintrc.json</i></summary>
+<summary><b>📝 create file 📝:</b> <i>.eslintrc.json</i></summary>
 
 ```json
 {
@@ -382,7 +382,7 @@ yarn add prettier @trivago/prettier-plugin-sort-imports -D
 ```
 
 <details>
-<summary><b>create file:</b> <i>.prettierrc.json</i></summary>
+<summary><b>📝 create file 📝:</b> <i>.prettierrc.json</i></summary>
 
 ```json
 {
@@ -424,7 +424,7 @@ npm pkg set scripts.test="jest"
 ```
 
 <details>
-<summary><b>create file:</b> <i>jest.config.ts</i></summary>
+<summary><b>📝 create file 📝:</b> <i>jest.config.ts</i></summary>
 
 ```ts
 import { Config } from "jest";
@@ -462,7 +462,7 @@ yarn add lint-staged tsc-files -D
 ```
 
 <details>
-<summary><b>create file:</b> <i>.lintstagedrc.json</i></summary>
+<summary><b>📝 create file 📝:</b> <i>.lintstagedrc.json</i></summary>
 
 ```json
 {
@@ -518,7 +518,7 @@ But if it is, before configuring it, you'll need to:
 Now you have both a Sonarcloud organization and a project key, that can be checked in _**[Your project] -> Information**_ - organization key will be something like `mygithubusername-sonar` and project key like `mygithubusername_myprojectname`, and these values will be used in the example configuration below.
 
 <details>
-<summary><b>create file:</b> <i>sonar-project.properties</i></summary>
+<summary><b>📝 create file 📝:</b> <i>sonar-project.properties</i></summary>
 
 ```properties
 sonar.organization=mygithubusername-sonar
@@ -532,7 +532,7 @@ sonar.javascript.lcov.reportPaths=coverage/lcov.info
 </details>
 
 <details>
-<summary><b>create file:</b> <i>.github/workflows/test-and-analyze.yml</i></summary>
+<summary><b>📝 create file 📝:</b> <i>.github/workflows/test-and-analyze.yml</i></summary>
 
 ```yml
 name: test-and-analyze
