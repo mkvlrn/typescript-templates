@@ -154,7 +154,7 @@ Then, just install the extensions listed in _workspace recommendations_:
 
 ### project initialization
 
-**cmd:** _git init, node project start, couple scripts, and first dependencies_
+**🖥️ cmd 🖥️:** _git init, node project start, couple scripts, and first dependencies_
 
 ```bash
 git init
@@ -272,7 +272,7 @@ max_line_length = 80
 
 ### commitlint
 
-**cmd:** _install dependencies_
+**🖥️ cmd 🖥️:** _install dependencies_
 
 ```bash
 yarn add @commitlint/cli @commitlint/config-conventional -D
@@ -291,7 +291,7 @@ yarn add @commitlint/cli @commitlint/config-conventional -D
 
 ### eslint
 
-**cmd:** _install dependencies_
+**🖥️ cmd 🖥️:** _install dependencies_
 
 ```bash
 yarn add eslint \
@@ -375,7 +375,7 @@ yarn add eslint \
 
 ### prettier
 
-**cmd:** _install dependencies_
+**🖥️ cmd 🖥️:** _install dependencies_
 
 ```bash
 yarn add prettier @trivago/prettier-plugin-sort-imports -D
@@ -412,7 +412,7 @@ yarn add prettier @trivago/prettier-plugin-sort-imports -D
 
 ### jest
 
-**cmd:** _install dependencies, add test script_
+**🖥️ cmd 🖥️:** _install dependencies, add test script_
 
 ```bash
 yarn add jest \
@@ -455,7 +455,7 @@ export default config;
 
 ### lint-staged
 
-**cmd:** _install dependencies_
+**🖥️ cmd 🖥️:** _install dependencies_
 
 ```bash
 yarn add lint-staged tsc-files -D
@@ -480,7 +480,7 @@ yarn add lint-staged tsc-files -D
 
 ### husky
 
-**cmd:** _install dependency and set up hooks_
+**🖥️ cmd 🖥️:** _install dependency and set up hooks_
 
 there's a `sed` step in there because of [this issue](https://github.com/typicode/husky/issues/924)
 
