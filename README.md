@@ -9,6 +9,7 @@ This is in no way a comprehensive selection of different, exotic repositories - 
   - [ts-node](#ts-node)
   - [ts-react](#ts-react)
   - [ts-lambda](#ts-lambda)
+  - [ts-rest-api-express](#ts-rest-api-express)
 - [doing it manually](#doing-it-manually)
   - [vscode setup](#vscode-setup)
   - [project initialization](#project-initialization)
@@ -97,6 +98,12 @@ A barebones react app using vite as bundler.
 **<https://github.com/mkvlrn/ts-lambda>**
 
 A simple lambda function implementation using the serverless framework.
+
+### ts-rest-api-express
+
+**<https://github.com/mkvlrn/ts-rest-api-express>**
+
+REST api using express, prisma, postgres, redis, jwt.
 
 ---
 
